@@ -1,0 +1,26 @@
+.headerContainer {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--color-white); 
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  @media (min-width: 600px) {
+    .headerContainer {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .headerContainer {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
+  }
+  

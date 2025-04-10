@@ -1,17 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import  Text  from "@/constants/textContent";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Text from "@/constants/text-content";
+import ThemeRegistry from "@/contexts/themeprovider";
+import Header from "@/components/molecules/header/header";
 
 export const metadata: Metadata = {
   title: Text.appName,
@@ -25,8 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body>
+        <ThemeRegistry>
+          <Header />
+          {children}
+        </ThemeRegistry>
       </body>
     </html>
   );
