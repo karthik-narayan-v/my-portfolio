@@ -3,6 +3,7 @@ import "./globals.css";
 import Text from "@/constants/text-content";
 import ThemeRegistry from "@/contexts/themeprovider";
 import Header from "@/components/molecules/header/header";
+import Footer from "@/components/molecules/footer/footer";
 
 export const metadata: Metadata = {
   title: Text.appName,
@@ -18,8 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeRegistry>
+        <div className="pageWrapper">
           <Header />
-          {children}
+          <main className="mainContent">{children}</main>
+          <Footer />
+        </div>
         </ThemeRegistry>
       </body>
     </html>

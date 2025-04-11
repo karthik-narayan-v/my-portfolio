@@ -1,0 +1,46 @@
+.footer {
+    width: 100%;
+    /* background-color: var(--color-white); */
+    padding: 2rem 1rem;
+    border-top: 1px solid #ddd;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .innerContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .contactButton {
+    background-color: var(--color-darker);
+    color: var(--color-white);
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    text-transform: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contactButton:hover {
+    background-color: var(--color-mid);
+  }
+  
+  .socialIcons {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+  
+  .iconBtn {
+    color: var(--color-mid);
+    font-size: 1.6rem;
+    transition: color 0.3s ease;
+  }
+  
+  .iconBtn:hover {
+    color: var(--color-darker);
+  }
+  
