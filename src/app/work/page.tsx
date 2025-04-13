@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-export default function Home() {
+export default function Work() {
   return (
     <Box
       height={"100%"}
@@ -21,7 +21,7 @@ export default function Home() {
           fontFamily: "Poppins",
         }}
       >
-        {"Main Section Coming Soon..."}
+        {"Work Section Coming Soon..."}
       </Typography>
     </Box>
   );
