@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import HeroSection from "@/components/pages/HeroSection/hero-section";
+import { Box } from "@mui/material";
 
 export default function Home() {
   return (
@@ -10,19 +11,7 @@ export default function Home() {
       justifyContent={"center"}
       paddingTop={"80px"}
     >
-      <Typography
-        variant="h6"
-        fontWeight="bold"
-        color={"customColor.darker"}
-        sx={{
-          fontSize: { xs: "1rem", sm: "1.15rem", md: "1.25rem" },
-          ml: 1,
-          whiteSpace: "nowrap",
-          fontFamily: "Poppins",
-        }}
-      >
-        {"Main Section Coming Soon..."}
-      </Typography>
+      <HeroSection />
     </Box>
   );
 }

@@ -24,6 +24,10 @@ const Header = () => {
     setOpen((prev) => !prev);
   };
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Box className={styles.headerContainer}>
       <Box
@@ -36,7 +40,7 @@ const Header = () => {
       >
         <Link
           href="/"
-          onClick={handleMenuIconClick}
+          onClick={handleClose}
           style={{ display: "flex", alignItems: "center" }}
         >
           <Image src="/png/logo.png" alt="Logo" width={40} height={40} />

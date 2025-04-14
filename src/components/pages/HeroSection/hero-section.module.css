@@ -1,0 +1,13 @@
+@media (min-width: 768px) {
+  .heroImage {
+    width: 280px !important;
+    height: 280px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroImage {
+    width: 320px !important;
+    height: 320px !important;
+  }
+}
