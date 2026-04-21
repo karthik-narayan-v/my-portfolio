@@ -23,4 +23,30 @@
       padding-right: 32px;
     }
   }
+
+  .logoText {
+  margin-left: 8px;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+@media (min-width: 600px) {
+  .logoText {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .logoText {
+    font-size: 1.5rem;
+  }
+}
+
+.navItem {
+  transition: opacity 0.3s ease;
+}
+
+.navItem:hover {
+  opacity: 0.6;
+}
   

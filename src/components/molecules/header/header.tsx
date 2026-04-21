@@ -1,32 +1,28 @@
 "use client";
 
-import { Box, Typography, IconButton, Dialog } from "@mui/material";
+import { Box, IconButton, Dialog } from "@mui/material";
 import Link from "next/link";
 import MenuIcon from "../../atoms/menu-icon";
 import { useState } from "react";
 import Image from "next/image";
 import TEXT from "@/constants/text-content";
+import { Text } from "@/components/atoms/Text";
 import styles from "./header.module.css";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Work", href: "/work" },
+  { label: "Home",   href: "/" },
+  { label: "Work",   href: "/work" },
   { label: "Skills", href: "/skills" },
-  { label: "About", href: "/about" },
+  { label: "About",  href: "/about" },
 ];
 
 const Header = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const handleMenuIconClick = () => {
-    setOpen((prev) => !prev);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleMenuIconClick = () => setOpen((prev) => !prev);
+  const handleClose = () => setOpen(false);
 
   return (
     <Box className={styles.headerContainer}>
@@ -44,19 +40,14 @@ const Header = () => {
           style={{ display: "flex", alignItems: "center" }}
         >
           <Image src="/png/logo.png" alt="Logo" width={40} height={40} />
-          <Typography
+          <Text
             variant="h6"
-            fontWeight="bold"
-            color={"customColor.darker"}
-            sx={{
-              fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
-              ml: 1,
-              whiteSpace: "nowrap",
-              fontFamily: "Poppins",
-            }}
+            weight="bold"
+            color="customColor.darker"
+            className={styles.logoText}
           >
             {TEXT.name}
-          </Typography>
+          </Text>
         </Link>
 
         <IconButton
@@ -67,6 +58,7 @@ const Header = () => {
           <MenuIcon isOpen={open} />
         </IconButton>
       </Box>
+
       <Dialog
         fullScreen
         open={open}
@@ -120,25 +112,15 @@ const Header = () => {
                     }}
                   />
                 )}
-                <Link
-                  href={href}
-                  onClick={handleMenuIconClick}
-                  style={{ zIndex: 1 }}
-                >
-                  <Typography
+                <Link href={href} onClick={handleMenuIconClick} style={{ zIndex: 1 }}>
+                  <Text
                     variant="h3"
-                    sx={{
-                      fontWeight: 600,
-                      color: isActive
-                        ? "customColor.deep"
-                        : "customColor.white",
-                      fontFamily: "Poppins",
-                      transition: "0.3s ease",
-                      "&:hover": { opacity: 0.6 },
-                    }}
+                    weight="medium"
+                    color={isActive ? "customColor.deep" : "customColor.white"}
+                    className={styles.navItem}
                   >
                     {label}
-                  </Typography>
+                  </Text>
                 </Link>
               </Box>
             );

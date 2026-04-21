@@ -11,3 +11,13 @@
     height: 320px !important;
   }
 }
+
+.actionButton {
+  font-weight: 600 !important;
+  text-transform: none !important;
+  font-family: "Inter", sans-serif !important;
+}
+
+.typewriterSpan {
+  font-weight: 700;
+}

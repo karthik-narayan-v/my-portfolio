@@ -1,10 +1,11 @@
 "use client";
 
 import TEXT from "@/constants/text-content";
-import { Box, Typography, Button, Stack, useTheme } from "@mui/material";
+import { Box, Button, Stack, useTheme } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Typewriter } from "react-simple-typewriter";
+import { Text } from "@/components/atoms/Text";
 import styles from "./hero-section.module.css";
 
 const HeroSection = () => {
@@ -29,36 +30,27 @@ const HeroSection = () => {
         overflow: "hidden",
       }}
     >
-      <Box
-        sx={{
-          flex: 1,
-          textAlign: { xs: "center", md: "left" },
-        }}
-        // bgcolor={"yellow"}
-      >
+      <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
         <Stack spacing={3}>
-          <Typography
+          <Text
             variant="h4"
-            fontWeight="bold"
-            color="customColor.deep"
-            fontFamily="Inter"
+            weight="bold"
+            size="xl"
+            color={theme.palette.customColor.deep}
           >
             {TEXT.title}
-          </Typography>
+          </Text>
 
-          <Typography
+          <Text
             variant="h5"
-            fontWeight={500}
-            color="customColor.deep"
-            fontFamily="Inter"
+            weight="medium"
+            size="lg"
+            color={theme.palette.customColor.deep}
           >
             {TEXT.subtitle}{" "}
             <span
-              style={{
-                color: theme.palette.customColor.darker,
-                fontFamily: "Poppins",
-                fontWeight: 700,
-              }}
+              className={styles.typewriterSpan}
+              style={{ color: theme.palette.customColor.darker }}
             >
               <Typewriter
                 words={[
@@ -74,39 +66,29 @@ const HeroSection = () => {
                 delaySpeed={1200}
               />
             </span>
-          </Typography>
+          </Text>
 
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2} pt={2}>
             <Button
               variant="contained"
-              color="secondary"
               size="large"
               href="/KarthikNarayan_Resume.pdf"
               download
-              sx={{
-                fontWeight: 600,
-                textTransform: "none",
-                fontFamily: "Inter",
-                backgroundColor: theme.palette.customColor.darker,
-              }}
+              className={styles.actionButton}
+              sx={{ backgroundColor: theme.palette.customColor.darker }}
             >
               {TEXT.resumeDownload}
             </Button>
 
             <Button
               variant="outlined"
-              color="secondary"
               size="large"
               onClick={() => router.push("/about")}
+              className={styles.actionButton}
               sx={{
-                fontWeight: 600,
-                textTransform: "none",
-                fontFamily: "Inter",
                 color: theme.palette.customColor.deep,
                 borderColor: theme.palette.customColor.deep,
-                "&:hover": {
-                  backgroundColor: "rgba(255,255,255,0.1)",
-                },
+                "&:hover": { backgroundColor: "rgba(255,255,255,0.1)" },
               }}
             >
               {TEXT.learnMore}

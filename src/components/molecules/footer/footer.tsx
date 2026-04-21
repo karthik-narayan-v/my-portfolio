@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack } from "@mui/material";
 import {
   FaInstagram,
   FaLinkedinIn,
@@ -9,6 +9,8 @@ import {
 } from "react-icons/fa";
 import Link from "next/link";
 import TEXT from "@/constants/text-content";
+import { Text } from "@/components/atoms/Text";
+import styles from "./footer.module.css";
 
 const socialLinks = [
   {
@@ -53,30 +55,22 @@ const Footer = () => {
         mt: "auto",
         textAlign: "center",
       }}
-      display={"flex"}
-      flexDirection={"column"}
+      display="flex"
+      flexDirection="column"
       gap={2}
     >
-      <Typography
+      <Text
+        variant="h6"
+        weight="bold"
         color="customColor.white"
-        sx={{
-          fontWeight: 700,
-          fontSize: { xs: "1rem", sm: "1.25rem" },
-          ml: 1,
-          fontFamily: "Inter",
-        }}
-        px={6}
+        className={styles.contactText}
       >
         {TEXT.contactHere}
-      </Typography>
+      </Text>
+
       <Stack direction="row" justifyContent="center" spacing={2}>
         {socialLinks.map(({ icon, href, brandStyles }, index) => (
-          <Link
-            key={index}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link key={index} href={href} target="_blank" rel="noopener noreferrer">
             <IconButton
               sx={{
                 position: "relative",
@@ -86,9 +80,7 @@ const Footer = () => {
                 color: "#fff",
                 borderRadius: "50%",
                 transition: "color 0.3s ease",
-                "&:hover svg": {
-                  ...brandStyles,
-                },
+                "&:hover svg": { ...brandStyles },
                 "&::after": {
                   content: '""',
                   position: "absolute",
@@ -111,30 +103,19 @@ const Footer = () => {
           </Link>
         ))}
       </Stack>
-      <Typography
+
+      <Text
+        variant="body2"
+        weight="regular"
         color="customColor.white"
-        sx={{
-          fontWeight: 400,
-          fontSize: { xs: "0.75rem", sm: "1rem" },
-          ml: 1,
-          fontFamily: "Inter",
-        }}
-        px={6}
+        className={styles.creditText}
       >
         {TEXT.developedBy.split("Next.js")[0]}
-        <Box
-          component="span"
-          sx={{
-            fontWeight: 600,
-            color: "#ffffff",
-            fontFamily: "Poppins",
-            display: "inline",
-          }}
-        >
+        <Box component="span" className={styles.nextjsHighlight}>
           Next.js
         </Box>
         {TEXT.developedBy.split("Next.js")[1]}
-      </Typography>
+      </Text>
     </Box>
   );
 };

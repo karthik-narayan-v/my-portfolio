@@ -1,4 +1,5 @@
 import "@mui/material/styles";
+declare module "@fontsource/inter";
 
 declare module "@mui/material/styles" {
   interface Palette {
@@ -18,5 +19,17 @@ declare module "@mui/material/styles" {
       deep: string;
       darker: string;
     };
+  }
+  interface TypographyVariants {
+    display: React.CSSProperties;
+  }
+  interface TypographyVariantsOptions {
+    display?: React.CSSProperties;
+  }
+}
+
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    display: true;
   }
 }
