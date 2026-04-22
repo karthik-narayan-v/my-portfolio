@@ -1,35 +1,47 @@
 import "@mui/material/styles";
-declare module "@fontsource/inter";
 
 declare module "@mui/material/styles" {
   interface Palette {
     customColor: {
+      primary: string;
+      primaryContainer: string;
+
+      surface: string;
+      surfaceContainer: string;
+      surfaceContainerLow: string;
+      surfaceContainerHigh: string;
+      surfaceContainerHighest: string;
+
+      textPrimary: string;
+      textSecondary: string;
+
+      border: string;
+      outline: string;
+
       white: string;
-      light: string;
-      mid: string;
-      deep: string;
-      darker: string;
+      black: string;
     };
   }
+
   interface PaletteOptions {
     customColor?: {
-      white: string;
-      light: string;
-      mid: string;
-      deep: string;
-      darker: string;
-    };
-  }
-  interface TypographyVariants {
-    display: React.CSSProperties;
-  }
-  interface TypographyVariantsOptions {
-    display?: React.CSSProperties;
-  }
-}
+      primary?: string;
+      primaryContainer?: string;
 
-declare module "@mui/material/Typography" {
-  interface TypographyPropsVariantOverrides {
-    display: true;
+      surface?: string;
+      surfaceContainer?: string;
+      surfaceContainerLow?: string;
+      surfaceContainerHigh?: string;
+      surfaceContainerHighest?: string;
+
+      textPrimary?: string;
+      textSecondary?: string;
+
+      border?: string;
+      outline?: string;
+
+      white?: string;
+      black?: string;
+    };
   }
 }

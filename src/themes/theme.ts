@@ -1,32 +1,88 @@
 import { createTheme } from "@mui/material/styles";
 
-import "@fontsource/inter/300.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/700.css";
-
 const theme = createTheme({
-  palette: {
-    customColor: {
-      white: "#ffffff",
-      light: "#fdb2e7",
-      mid: "#fb93d7",
-      deep: "#ee61bd",
-      darker: "#f24ab8",
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
     },
   },
+
+  palette: {
+    primary: {
+      main: "#ae0080",
+      light: "#ff68c6",
+      dark: "#990070",
+    },
+
+    background: {
+      default: "#fff3f9",
+    },
+
+    text: {
+      primary: "#432342",
+      secondary: "#744f71",
+    },
+
+    customColor: {
+      primary: "#ae0080",
+      primaryContainer: "#ff68c6",
+
+      surface: "#fff3f9",
+      surfaceContainer: "#ffdff8",
+      surfaceContainerLow: "#ffebf8",
+      surfaceContainerHigh: "#ffd6f7",
+      surfaceContainerHighest: "#ffcef7",
+
+      textPrimary: "#432342",
+      textSecondary: "#744f71",
+
+      border: "#cc9fc5",
+      outline: "#926a8d",
+
+      white: "#ffffff",
+      black: "#000000",
+    },
+  },
+
   typography: {
-    fontFamily: "Inter",
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 700,
-    h1: { fontWeight: 700 },
-    h2: { fontWeight: 700 },
-    h3: { fontWeight: 600 },
-    body1: { fontWeight: 400 },
-    body2: { fontWeight: 400 },
-    button: { fontWeight: 500, textTransform: "none" },
+    fontFamily: "Inter, sans-serif",
+
+    h1: {
+      fontSize: "clamp(2.5rem, 6vw, 4rem)",
+      fontWeight: 800,
+      lineHeight: 1.1,
+    },
+    h2: {
+      fontSize: "clamp(2rem, 5vw, 3rem)",
+      fontWeight: 800,
+    },
+    h3: {
+      fontSize: "clamp(1.75rem, 4vw, 2.25rem)",
+      fontWeight: 700,
+    },
+    h4: {
+      fontSize: "clamp(1.5rem, 3vw, 1.875rem)",
+      fontWeight: 600,
+    },
+    h5: {
+      fontSize: "clamp(1.25rem, 2.5vw, 1.5rem)",
+      fontWeight: 600,
+    },
+
+    body1: {
+      fontSize: "clamp(0.95rem, 1vw, 1rem)",
+    },
+    body2: {
+      fontSize: "0.875rem",
+    },
+  },
+
+  shape: {
+    borderRadius: 16,
   },
 });
 

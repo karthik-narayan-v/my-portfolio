@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Text from "@/constants/text-content";
 import ThemeRegistry from "@/contexts/themeprovider";
-import Header from "@/components/molecules/header/header";
-import Footer from "@/components/molecules/footer/footer";
+import Header from "@/components/layout/header/header";
+import Footer from "@/components/layout/footer/footer";
 
 export const metadata: Metadata = {
   title: Text.appName,

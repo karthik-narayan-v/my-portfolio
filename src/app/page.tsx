@@ -1,17 +1,14 @@
-import HeroSection from "@/components/pages/HeroSection/hero-section";
-import { Box } from "@mui/material";
+import { AppContainer } from "@/components/layout/AppContainer";
+import HeroSection from "@/components/sections/hero";
+import WorksSection from "@/components/sections/tech-stack";
+import TechStackSection from "@/components/sections/work-section";
 
 export default function Home() {
   return (
-    <Box
-      height={"100%"}
-      width={"100%"}
-      display={"flex"}
-      alignContent={"center"}
-      justifyContent={"center"}
-      paddingTop={"80px"}
-    >
+    <AppContainer>
       <HeroSection />
-    </Box>
+      <WorksSection />
+      <TechStackSection />
+    </AppContainer>
   );
 }
