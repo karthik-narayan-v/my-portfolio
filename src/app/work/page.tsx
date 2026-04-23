@@ -1,5 +1,10 @@
 import { AppContainer } from "@/components/layout/AppContainer";
+import WorkPageSection from "@/components/sections/work-page";
 
 export default function Work() {
-  return <AppContainer>Work page</AppContainer>;
+  return (
+    <AppContainer>
+      <WorkPageSection />
+    </AppContainer>
+  );
 }

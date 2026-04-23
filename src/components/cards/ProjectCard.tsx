@@ -16,7 +16,8 @@ type ProjectCardProps = {
   description: string;
   image: string;
   tags: string[];
-  variant?: "elevated" | "default";
+  variant?: "elevated" | "default" | "work"; // ✅ NEW
+  href?: string;
 };
 
 export const ProjectCard = ({
@@ -25,13 +26,16 @@ export const ProjectCard = ({
   image,
   tags,
   variant = "default",
+  href = "/project",
 }: ProjectCardProps) => {
   const theme = useTheme();
   const router = useRouter();
 
+  const isWork = variant === "work";
+
   return (
     <MotionBox
-      onClick={() => router.push("/project")}
+      onClick={() => router.push(href)}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -40,14 +44,25 @@ export const ProjectCard = ({
       sx={{
         borderRadius: scale.md,
         overflow: "hidden",
-        backgroundColor: theme.palette.customColor.surface,
         cursor: "pointer",
+        display: "flex",
+        flexDirection: "column",
+
+        ...(isWork
+          ? {
+              p: scale.lg,
+              backgroundColor: theme.palette.customColor.surfaceContainerLow,
+              border: `1px solid ${theme.palette.customColor.tertiaryContainer}`,
+            }
+          : {
+              backgroundColor: theme.palette.customColor.surface,
+            }),
 
         ...(variant === "elevated" && {
           boxShadow: "0px 32px 64px -12px rgba(174,0,128,0.25)",
         }),
 
-        "&:hover img": {
+        "&:hover .project-image": {
           transform: "scale(1.05)",
         },
       }}
@@ -55,59 +70,110 @@ export const ProjectCard = ({
       {/* IMAGE */}
       <Box
         sx={{
-          aspectRatio: "16/9",
+          mb: isWork ? scale.lg : 0,
+          borderRadius: isWork ? scale.md : 0,
           overflow: "hidden",
-          backgroundColor: theme.palette.customColor.inverseSurface,
+          backgroundColor: theme.palette.customColor.surfaceContainer,
         }}
       >
-        <Image
-          src={image}
-          alt={title}
-          width={800}
-          height={400}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transition: "transform 0.7s ease",
-          }}
-        />
-      </Box>
-
-      {/* CONTENT */}
-      <Box p={scale["2xl"]}>
-        {/* TAGS */}
-        <Box display="flex" gap={scale.xs} flexWrap="wrap" mb={scale.md}>
-          {tags.map((tag) => (
-            <TagChip key={tag} label={tag} variant="primary" />
-          ))}
-        </Box>
-
-        <Text variant="h4" weight="bold">
-          {title}
-        </Text>
-
-        <Box mt={scale.sm}>
-          <Text color={theme.palette.customColor.textSecondary}>
-            {description}
-          </Text>
-        </Box>
-
-        {/* CTA */}
         <Box
-          mt={scale.lg}
           sx={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: scale.xs,
-            color: theme.palette.customColor.primary,
-            fontWeight: 700,
-            transition: "all 0.3s ease",
+            position: "relative",
+            width: "100%",
+            aspectRatio: "16 / 9",
           }}
         >
-          View Case Study
-          <FiArrowRight />
+          <Box
+            className="project-image"
+            sx={{
+              width: "100%",
+              height: "100%",
+              transition: "transform 0.7s ease",
+            }}
+          >
+            <Image
+              src={image}
+              alt={title}
+              fill
+              style={{ objectFit: "cover" }}
+            />
+          </Box>
         </Box>
+      </Box>
+
+      <Box p={isWork ? 0 : scale["2xl"]}>
+        {isWork ? (
+          <>
+            <Text variant="h4" weight="bold">
+              {title}
+            </Text>
+
+            {/* DESCRIPTION */}
+            <Box mb={scale.md}>
+              <Text color={theme.palette.customColor.textSecondary}>
+                {description}
+              </Text>
+            </Box>
+
+            {/* TAGS */}
+            <Box display="flex" flexWrap="wrap" gap={scale.xs} mb={scale.lg}>
+              {tags.map((tag) => (
+                <TagChip key={tag} label={tag} variant="hero" />
+              ))}
+            </Box>
+
+            {/* CTA */}
+            <MotionBox
+              whileHover={{ x: 6 }}
+              transition={{ duration: 0.3 }}
+              sx={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: scale.xs,
+                color: theme.palette.customColor.primary,
+                fontWeight: 700,
+              }}
+            >
+              <Text weight="bold" color={theme.palette.customColor.primary}>
+                View Project
+              </Text>
+              <FiArrowRight size={18} />
+            </MotionBox>
+          </>
+        ) : (
+          <>
+            {/* DEFAULT / ELEVATED STRUCTURE */}
+            <Box display="flex" gap={scale.xs} flexWrap="wrap" mb={scale.md}>
+              {tags.map((tag) => (
+                <TagChip key={tag} label={tag} variant="primary" />
+              ))}
+            </Box>
+
+            <Text variant="h4" weight="bold">
+              {title}
+            </Text>
+
+            <Box mt={scale.sm}>
+              <Text color={theme.palette.customColor.textSecondary}>
+                {description}
+              </Text>
+            </Box>
+
+            <Box
+              mt={scale.lg}
+              sx={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: scale.xs,
+                color: theme.palette.customColor.primary,
+                fontWeight: 700,
+              }}
+            >
+              View Case Study
+              <FiArrowRight />
+            </Box>
+          </>
+        )}
       </Box>
     </MotionBox>
   );
