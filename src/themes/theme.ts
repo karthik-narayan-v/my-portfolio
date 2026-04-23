@@ -30,6 +30,7 @@ const theme = createTheme({
     customColor: {
       primary: "#ae0080",
       primaryContainer: "#ff68c6",
+      primaryDim: "#990070",
 
       surface: "#fff3f9",
       surfaceContainer: "#ffdff8",
@@ -42,6 +43,14 @@ const theme = createTheme({
 
       border: "#cc9fc5",
       outline: "#926a8d",
+      outlineVariant: "rgba(204,159,197,0.3)",
+
+      tertiaryContainer: "#fdb2e7",
+      onTertiaryContainer: "#662d5a",
+
+      inverseSurface: "#1e031f",
+
+      glow: "#ee61bd", 
 
       white: "#ffffff",
       black: "#000000",
@@ -75,9 +84,15 @@ const theme = createTheme({
 
     body1: {
       fontSize: "clamp(0.95rem, 1vw, 1rem)",
+      lineHeight: 1.6,
     },
     body2: {
       fontSize: "0.875rem",
+    },
+
+    button: {
+      fontWeight: 700,
+      textTransform: "none",
     },
   },
 

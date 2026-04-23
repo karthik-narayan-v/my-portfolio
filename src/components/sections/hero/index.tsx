@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Text } from "@/components/core/Text";
 import { scale } from "@/themes/scale";
 import { Button } from "@/components/core/Button";
+import { TagChip } from "@/components/core/TagChip";
 
 const HeroSection = () => {
   const theme = useTheme();
@@ -18,10 +19,11 @@ const HeroSection = () => {
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         alignItems: "center",
+        justifyContent: "space-between",
 
         gap: {
           xs: scale.xl,
-          md: scale["2xl"],
+          md: scale.xl,
         },
 
         minHeight: "calc(100vh - 80px)",
@@ -30,9 +32,9 @@ const HeroSection = () => {
           xs: scale["2xl"],
           md: scale["3xl"],
         },
-
         px: {
-          md: scale["4xl"],
+          xs: 0,
+          sm: scale.lg,
         },
       }}
     >
@@ -41,104 +43,80 @@ const HeroSection = () => {
           flex: { md: "0 0 60%" },
           display: "flex",
           flexDirection: "column",
+          alignItems: "flex-start",
+          textAlign: { xs: "center", md: "left" },
           gap: scale.lg,
-          px: {
-            xl: scale["4xl"],
-          },
-          textAlign: {
-            xs: "center",
-            md: "left",
-          },
         }}
       >
+        <TagChip label="Available for Work" variant="hero" />
+
         <Text
           variant="hero"
           weight="extrabold"
-          color={theme.palette.customColor.primary}
+          color={theme.palette.customColor.textPrimary}
         >
-          Hi, I&apos;m Karthik 👋
+          Building Digital <br />
+          <span style={{ color: theme.palette.customColor.primary }}>
+            Full Stack Engineer
+          </span>
         </Text>
 
-        <Stack
-          direction="row"
-          alignItems="center"
-          gap={scale.sm}
-          flexWrap="wrap"
-          justifyContent="flex-start"
-        >
-          <Text
-            variant="h5"
-            weight="medium"
-            color={theme.palette.customColor.textSecondary}
-          >
-            A dedicated
+        <Box maxWidth="40rem">
+          <Text variant="body" color={theme.palette.customColor.textSecondary}>
+            I craft high-performance web environments where rigorous engineering
+            logic meets disruptive editorial design. Based in the future.
           </Text>
+        </Box>
 
-          <Box
-            sx={{
-              px: scale.md,
-              py: scale.xs,
-              borderRadius: scale.lg,
-              backgroundColor: theme.palette.customColor.primaryContainer,
-            }}
-          >
-            <Text variant="h5" weight="bold">
-              Mobile Developer
-            </Text>
-          </Box>
-        </Stack>
-
-        <Text variant="body" color={theme.palette.customColor.textSecondary}>
-          Crafting fluid user experiences and robust architectures for mobile
-          and web. Specializing in React Native, TypeScript, and
-          high-performance digital ecosystems.
-        </Text>
-
-        <Stack
-          direction="row"
-          gap={scale.md}
+        <Box
+          display="flex"
+          flexDirection={{ xs: "column", md: "row" }}
           flexWrap="wrap"
-          pt={scale.sm}
-          justifyContent={{
-            xs: "center",
-            md: "flex-start",
-          }}
+          gap={scale.lg}
+          justifyContent={{ xs: "center", md: "flex-start" }}
+          px={{xs: scale.lg, md: 0}}
+          width={{ xs: "100%", md: "auto" }}
         >
-          <Button variantType="gradient" icon={<span>📄</span>} href="/KarthikNarayan_Resume.pdf">
-            Check Out My CV
-          </Button>
+          <Button variantType="gradient">Check Out My CV</Button>
 
-          <Button variantType="outline" onClick={() => router.push("/about")}>👉 The Story So Far</Button>
-        </Stack>
+          <Button variantType="outline">View Projects</Button>
+        </Box>
       </Box>
 
       <Box
         sx={{
-          flex: { md: "0 0 40%" },
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-
-          mt: {
+          mb: {
             xs: scale.xl,
             md: 0,
           },
         }}
       >
-        <Box sx={{ position: "relative" }}>
+        <Box
+          sx={{
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+
+            "&:hover .glow": {
+              opacity: 0.5,
+            },
+          }}
+        >
           <Box
+            className="glow"
             sx={{
               position: "absolute",
-              inset: "-3rem",
+              inset: 0,
               borderRadius: "50%",
-              background: theme.palette.customColor.primaryContainer,
+              backgroundColor: theme.palette.customColor.glow,
               filter: "blur(60px)",
               opacity: 0.3,
-              transition: "opacity 0.3s",
-
-              "&:hover": {
-                opacity: 0.5,
-              },
+              transition: "opacity 0.3s ease",
+              zIndex: 0,
             }}
           />
 
@@ -146,17 +124,21 @@ const HeroSection = () => {
             sx={{
               position: "relative",
               width: {
-                xs: "15rem",
+                xs: "16rem",
                 md: "20rem",
               },
               height: {
-                xs: "15rem",
+                xs: "16rem",
                 md: "20rem",
               },
               borderRadius: "50%",
               overflow: "hidden",
-              border: `0.5rem solid ${theme.palette.customColor.surfaceContainerHighest}`,
+
+              border: `8px solid ${theme.palette.customColor.surfaceContainerHighest}`,
+
               boxShadow: "0 20px 60px rgba(174,0,128,0.2)",
+
+              zIndex: 1,
             }}
           >
             <Image

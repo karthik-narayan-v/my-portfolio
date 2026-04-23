@@ -3,30 +3,9 @@ import "@mui/material/styles";
 declare module "@mui/material/styles" {
   interface Palette {
     customColor: {
-      primary: string;
-      primaryContainer: string;
-
-      surface: string;
-      surfaceContainer: string;
-      surfaceContainerLow: string;
-      surfaceContainerHigh: string;
-      surfaceContainerHighest: string;
-
-      textPrimary: string;
-      textSecondary: string;
-
-      border: string;
-      outline: string;
-
-      white: string;
-      black: string;
-    };
-  }
-
-  interface PaletteOptions {
-    customColor?: {
       primary?: string;
       primaryContainer?: string;
+      primaryDim?: string;
 
       surface?: string;
       surfaceContainer?: string;
@@ -39,6 +18,45 @@ declare module "@mui/material/styles" {
 
       border?: string;
       outline?: string;
+      outlineVariant?: string;
+
+      tertiaryContainer?: string;
+      onTertiaryContainer?: string;
+
+      inverseSurface?: string;
+
+      glow?: string;
+
+      white?: string;
+      black?: string;
+    };
+  }
+
+  interface PaletteOptions {
+    customColor?: {
+      primary?: string;
+      primaryContainer?: string;
+      primaryDim?: string;
+
+      surface?: string;
+      surfaceContainer?: string;
+      surfaceContainerLow?: string;
+      surfaceContainerHigh?: string;
+      surfaceContainerHighest?: string;
+
+      textPrimary?: string;
+      textSecondary?: string;
+
+      border?: string;
+      outline?: string;
+      outlineVariant?: string;
+
+      tertiaryContainer?: string;
+      onTertiaryContainer?: string;
+
+      inverseSurface?: string;
+
+      glow?: string;
 
       white?: string;
       black?: string;
