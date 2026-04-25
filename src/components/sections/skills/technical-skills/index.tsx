@@ -5,11 +5,46 @@ import { Text } from "@/components/core/Text";
 import { TagChip } from "@/components/core/TagChip";
 import { scale } from "@/themes/scale";
 
+import {
+  FiGlobe,
+  FiDatabase,
+  FiSmartphone,
+  FiTool,
+} from "react-icons/fi";
+
 const skills = {
   web: ["React.js", "Next.js", "HTML5", "CSS3", "Tailwind CSS"],
   backend: ["Node.js", "Express", "PostgreSQL", "MongoDB", "GraphQL"],
   mobile: ["React Native", "Flutter", "Swift", "Kotlin"],
   tools: ["Git", "Docker", "Figma", "Firebase", "Postman"],
+};
+
+const SectionHeading = ({
+  icon: Icon,
+  title,
+}: {
+  icon: React.ElementType;
+  title: string;
+}) => {
+  const theme = useTheme();
+
+  return (
+    <Box display="flex" alignItems="center" gap={scale.sm}>
+      <Box
+        sx={{
+          fontSize: "1.75rem",
+          color: theme.palette.customColor.primary,
+          display: "flex",
+        }}
+      >
+        <Icon />
+      </Box>
+
+      <Text variant="h4" weight="bold">
+        {title}
+      </Text>
+    </Box>
+  );
 };
 
 const TechnicalSkillsSection = () => {
@@ -25,10 +60,9 @@ const TechnicalSkillsSection = () => {
           md: "repeat(12, 1fr)",
         },
         gap: scale.xl,
-        mb: scale["4xl"],
+        py: scale["2xl"],
       }}
     >
-      {/* 🔥 WEB (MAIN CARD) */}
       <Box
         sx={{
           gridColumn: { md: "span 8" },
@@ -37,7 +71,6 @@ const TechnicalSkillsSection = () => {
           backgroundColor: theme.palette.customColor.surfaceContainerLow,
           position: "relative",
           overflow: "hidden",
-
           transition: "all 0.4s ease",
 
           "&:hover": {
@@ -45,23 +78,7 @@ const TechnicalSkillsSection = () => {
           },
         }}
       >
-        {/* background icon */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            p: scale.lg,
-            opacity: 0.1,
-            fontSize: "6rem",
-          }}
-        >
-          🌐
-        </Box>
-
-        <Text variant="h4" weight="bold">
-          Web Development
-        </Text>
+        <SectionHeading icon={FiGlobe} title="Web Development" />
 
         <Box mt={scale.md} display="flex" flexWrap="wrap" gap={scale.sm}>
           {skills.web.map((skill) => (
@@ -70,7 +87,6 @@ const TechnicalSkillsSection = () => {
         </Box>
       </Box>
 
-      {/* 🔥 BACKEND */}
       <Box
         sx={{
           gridColumn: { md: "span 4" },
@@ -83,9 +99,7 @@ const TechnicalSkillsSection = () => {
         }}
       >
         <Box>
-          <Text variant="h4" weight="bold">
-            Backend
-          </Text>
+          <SectionHeading icon={FiDatabase} title="Backend" />
 
           <Box mt={scale.md} display="flex" flexWrap="wrap" gap={scale.xs}>
             {skills.backend.map((skill) => (
@@ -94,30 +108,38 @@ const TechnicalSkillsSection = () => {
           </Box>
         </Box>
 
-        <Box mt={scale.lg} pt={scale.md} borderTop={`1px solid ${theme.palette.customColor.outlineVariant}`}>
+        <Box
+          mt={scale.lg}
+          pt={scale.md}
+          borderTop={`1px solid ${theme.palette.customColor.outlineVariant}`}
+        >
           <Text variant="caption" weight="bold">
             CURRENT FOCUS
           </Text>
+
           <Text variant="body" weight="semibold">
             Scalable Architecture
           </Text>
         </Box>
       </Box>
 
-      {/* 🔥 MOBILE */}
       <Box
         sx={{
           gridColumn: { md: "span 4" },
           p: scale["2xl"],
           borderRadius: scale.md,
-          backgroundColor: theme.palette.customColor.tertiaryContainer + "33",
+          backgroundColor:
+            theme.palette.customColor.tertiaryContainer + "33",
         }}
       >
-        <Text variant="h4" weight="bold">
-          Mobile
-        </Text>
+        <SectionHeading icon={FiSmartphone} title="Mobile" />
 
-        <Box mt={scale.md} display="flex" flexDirection="column" gap={scale.sm}>
+        <Box
+          mt={scale.md}
+          display="flex"
+          flexDirection="column"
+          gap={scale.sm}
+        >
           {skills.mobile.map((skill, i) => (
             <Box key={skill} display="flex" alignItems="center" gap={scale.sm}>
               <Box
@@ -131,6 +153,7 @@ const TechnicalSkillsSection = () => {
                       : theme.palette.customColor.primary + "66",
                 }}
               />
+
               <Text variant="body" weight="semibold">
                 {skill}
               </Text>
@@ -139,7 +162,6 @@ const TechnicalSkillsSection = () => {
         </Box>
       </Box>
 
-      {/* 🔥 TOOLS / ECOSYSTEM */}
       <Box
         sx={{
           gridColumn: { md: "span 8" },
@@ -154,9 +176,7 @@ const TechnicalSkillsSection = () => {
         }}
       >
         <Box>
-          <Text variant="h4" weight="bold">
-            Ecosystem & Tools
-          </Text>
+          <SectionHeading icon={FiTool} title="Ecosystem & Tools" />
 
           <Box mt={scale.md} display="flex" flexWrap="wrap" gap={scale.sm}>
             {skills.tools.map((tool) => (
@@ -165,7 +185,6 @@ const TechnicalSkillsSection = () => {
           </Box>
         </Box>
 
-        {/* visual element */}
         <Box
           sx={{
             display: { xs: "none", lg: "flex" },
@@ -175,11 +194,13 @@ const TechnicalSkillsSection = () => {
             backgroundColor: theme.palette.customColor.primary + "22",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: "4rem",
-            opacity: 0.5,
           }}
         >
-          ⚙️
+          <FiTool
+            size={60}
+            color={theme.palette.customColor.primary}
+            style={{ opacity: 0.3 }}
+          />
         </Box>
       </Box>
     </Box>

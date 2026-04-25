@@ -31,7 +31,11 @@ type TagChipProps = {
   mb?: string | number;
 };
 
-export const TagChip = ({ label, variant = "primary", mb }: TagChipProps) => {
+export const TagChip = ({
+  label,
+  variant = "primary",
+  mb,
+}: TagChipProps) => {
   const theme = useTheme();
 
   const variants: Record<TagVariant, VariantConfig> = {
@@ -57,13 +61,15 @@ export const TagChip = ({ label, variant = "primary", mb }: TagChipProps) => {
       textTransform: "uppercase",
     },
 
+    /* 🔥 THIS IS YOUR HTML STYLE */
     skill: {
-      px: scale.sm,
-      py: scale.xs,
-      bg: theme.palette.customColor.surfaceContainerHighest + "33",
-      color: theme.palette.customColor.white,
-      fontSize: "0.75rem",
+      px: scale.lg,
+      py: scale.sm,
+      bg: theme.palette.customColor.tertiaryContainer,
+      color: theme.palette.customColor.onTertiaryContainer,
+      fontSize: "0.875rem",
       fontWeight: 500,
+      hover: true,
     },
 
     pill: {
@@ -86,6 +92,7 @@ export const TagChip = ({ label, variant = "primary", mb }: TagChipProps) => {
       hover: true,
     },
 
+    /* 🔥 MAKE THIS INTERACTIVE */
     soft: {
       px: scale.lg,
       py: scale.xs,
@@ -93,6 +100,7 @@ export const TagChip = ({ label, variant = "primary", mb }: TagChipProps) => {
       color: theme.palette.customColor.textPrimary,
       fontSize: "0.875rem",
       fontWeight: 500,
+      hover: true,
     },
 
     badge: {
@@ -126,17 +134,24 @@ export const TagChip = ({ label, variant = "primary", mb }: TagChipProps) => {
         letterSpacing: config.letterSpacing,
         textTransform: config.textTransform,
 
-        transition: config.hover ? "transform 0.2s ease" : "none",
+        transition: config.hover
+          ? "transform 0.25s ease, box-shadow 0.25s ease"
+          : "none",
+
         cursor: config.hover ? "default" : "inherit",
 
+        /* 🔥 PREMIUM HOVER */
         ...(config.hover && {
           "&:hover": {
-            transform: "scale(1.05)",
+            transform: "translateY(-2px) scale(1.06)",
+            boxShadow: "0 10px 25px rgba(174,0,128,0.18)",
           },
         }),
       }}
     >
-      {config.textTransform === "uppercase" ? label.toUpperCase() : label}
+      {config.textTransform === "uppercase"
+        ? label.toUpperCase()
+        : label}
     </Box>
   );
 };
