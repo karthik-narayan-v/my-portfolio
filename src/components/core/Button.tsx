@@ -1,6 +1,11 @@
 "use client";
 
-import { Button as MuiButton, ButtonProps as MuiButtonProps, useTheme } from "@mui/material";
+import {
+  Button as MuiButton,
+  ButtonProps as MuiButtonProps,
+  useTheme,
+} from "@mui/material";
+import { SystemStyleObject, Theme } from "@mui/system";
 import { ReactNode } from "react";
 import { scale } from "@/themes/scale";
 
@@ -22,7 +27,7 @@ export const Button = ({
 }: ButtonProps) => {
   const theme = useTheme();
 
-  const baseStyles = {
+  const baseStyles: SystemStyleObject<Theme> = {
     px: scale.lg,
     py: scale.sm,
     borderRadius: "999px",
@@ -44,7 +49,7 @@ export const Button = ({
     },
   };
 
-  const variants = {
+  const variants: Record<Variant, SystemStyleObject<Theme>> = {
     gradient: {
       background: `linear-gradient(135deg, ${theme.palette.customColor.primary}, ${theme.palette.customColor.primaryContainer})`,
       color: theme.palette.customColor.white,
@@ -56,8 +61,7 @@ export const Button = ({
       color: theme.palette.customColor.primary,
 
       "&:hover": {
-        backgroundColor:
-          theme.palette.customColor.surfaceContainerLow,
+        backgroundColor: theme.palette.customColor.surfaceContainerLow,
       },
     },
 
@@ -86,8 +90,8 @@ export const Button = ({
       }}
       {...props}
     >
+      {icon && <span style={{ display: "flex" }}>{icon}</span>}
       {children}
-      {icon && <span>{icon}</span>}
     </MuiButton>
   );
 };
