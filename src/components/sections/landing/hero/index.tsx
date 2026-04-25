@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Stack, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Text } from "@/components/core/Text";
